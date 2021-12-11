@@ -1,0 +1,105 @@
+h4{
+    font-size: 1.0em;
+}
+
+body{
+    background-color: rgb(94, 216, 231);
+    background-image:url("../img/bg_tile.png");
+    background-size: 48px 48px;
+    animation: anim-scroll 2s linear infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.flipped {
+    transform: scale(-1, -1);
+    padding-bottom: 30vh;
+
+}
+
+.normal {
+    transform: scale(1, 1);
+    padding-top: 30vh;
+}
+
+#eventHaver {
+    background-color: rgb(53, 47, 47); 
+    padding: 3.5vh;
+    text-align: center; 
+    display: block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+#tips, #batteryzone {
+    display: none;
+}
+
+#calibrate { 
+    position: absolute;
+    width: 100%;
+    font-size: 2em; 
+    background-color: rgb(53, 47, 47); 
+    text-align: center; 
+    padding: 3.5vh;
+    z-index: 100;
+}
+
+.drop-shadow {
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border: white solid 8px;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.paused {
+    color: #FFFA8A;
+    animation: blinker 1s linear infinite;
+}
+
+.fade-away {
+    animation: fade 1s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade {
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes anim-scroll {
+    0% {
+      background-position : 0px 0px
+    }
+    100% {
+      background-position : -48px -48px
+    }
+}
+
+

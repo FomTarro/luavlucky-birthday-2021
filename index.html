@@ -1,0 +1,32 @@
+
+<!-- saved from url=(0041)https://cs4241-a6-fomtarro.herokuapp.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Lua Egg Timer</title>
+    
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+  </head>
+    <body>
+        <div id="calibrate" class='drop-shadow' onclick="SetOffset()">
+            <span id="instructions">[hold your phone vertically, please]</span>
+            <br>
+            <span>[then tap here to start the timer]</span>
+
+        </div>
+        <div id="flip" class="normal">
+            <div id="eventHaver">
+                <div id="timerDisplay" style="font-size: 10em;">0:00:00</div>
+                <div id="tips" style="display: block;"><h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to resume]</h2></div>
+                <div id="batteryzone" style="display: block;">
+                    <div id="percentzone"><h3>[battery level: 100%]</h3></div>
+                     <div id="chargingzone"><h4>[battery: charging]</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/scripts.js"></script>
+    
+
+</body></html>
