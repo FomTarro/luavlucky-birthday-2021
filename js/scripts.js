@@ -79,7 +79,7 @@ function Timer(){
 
 function mHandler(event){
 	console.log(event);
-	document.getElementById('tips').innerHTML = `<h1>${event.alpha} - ${event.beta} - ${event.gamma}</h1>`
+	document.getElementById('tips').innerHTML = `<h1>${event.alpha.toFixed(2)} - ${event.beta.toFixed(2)} - ${event.gamma.toFixed(2)}</h1>`
 	// _rotationTotal += event.rotationRate.gamma;
 	// _rotationTotal = _rotationTotal % 360;
 	// _angle = Math.abs(_rotationTotal);
