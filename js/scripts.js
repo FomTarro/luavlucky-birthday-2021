@@ -26,12 +26,12 @@ function Pause(event){
 	if(_paused){
 		window.clearInterval(_timer);
 		document.getElementById('timerDisplay').classList.add('paused')
-		document.getElementById('tips').innerHTML = "<h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to resume]</h2>"
+		// document.getElementById('tips').innerHTML = "<h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to resume]</h2>"
 	}
 	else{
 		document.getElementById('timerDisplay').classList.remove('paused')
 		_timer = window.setInterval(Timer, 10);
-		document.getElementById('tips').innerHTML = "<h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to pause]</h2>"
+		// document.getElementById('tips').innerHTML = "<h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to pause]</h2>"
 	}
 }
 
