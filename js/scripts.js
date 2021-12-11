@@ -9,8 +9,6 @@ var _timer_ms = 0;
 
 _rotationTotal = 0;
 
-window.addEventListener('deviceorientation', mHandler);
-
 navigator.getBattery().then(function(battery) {
 	document.getElementById('percentzone').innerHTML = "<h3>[battery level: " + Math.floor(battery.level * 100) + "%]</h3>";
 	document.getElementById('chargingzone').innerHTML = "<h4>[battery: " + (battery.charging ? "charging" : "not charging") + "]</h4>";
@@ -80,7 +78,7 @@ function Timer(){
 }
 
 function mHandler(event){
-	document.getElementById('tips').innerHTML = `${event.alpha} - ${event.beta} - ${event.gamma}`
+	document.getElementById('tips').innerHTML = `<h1>${event.alpha} - ${event.beta} - ${event.gamma}</h1>`
 	// _rotationTotal += event.rotationRate.gamma;
 	// _rotationTotal = _rotationTotal % 360;
 	// _angle = Math.abs(_rotationTotal);
@@ -94,3 +92,5 @@ function mHandler(event){
 	// 	document.getElementById('flip').className = "normal";
 	// }
 }
+
+window.addEventListener('deviceorientation', mHandler);
