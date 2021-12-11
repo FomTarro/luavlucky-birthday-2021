@@ -9,7 +9,7 @@ var _timer_ms = 0;
 
 _rotationTotal = 0;
 
-window.addEventListener('devicemotion', mHandler);
+window.addEventListener('deviceorientation', mHandler);
 
 navigator.getBattery().then(function(battery) {
 	document.getElementById('percentzone').innerHTML = "<h3>[battery level: " + Math.floor(battery.level * 100) + "%]</h3>";
@@ -80,16 +80,17 @@ function Timer(){
 }
 
 function mHandler(event){
-	_rotationTotal += event.rotationRate.gamma;
-	_rotationTotal = _rotationTotal % 360;
-	_angle = Math.abs(_rotationTotal);
-	//document.getElementById('timerDisplay').innerText = _angle;
-	if(_angle <= 270 && _angle > 90){
-		_mode = "backward"
-		document.getElementById('flip').className = "flipped";
-	}
-	else if(_angle >= 270 || _angle <= 90){
-		_mode = "forward"
-		document.getElementById('flip').className = "normal";
-	}
+	document.getElementById('tips').innerHTML = `${event.alpha} - ${event.beta} - ${event.gamma}`
+	// _rotationTotal += event.rotationRate.gamma;
+	// _rotationTotal = _rotationTotal % 360;
+	// _angle = Math.abs(_rotationTotal);
+	// //document.getElementById('timerDisplay').innerText = _angle;
+	// if(_angle <= 270 && _angle > 90){
+	// 	_mode = "backward"
+	// 	document.getElementById('flip').className = "flipped";
+	// }
+	// else if(_angle >= 270 || _angle <= 90){
+	// 	_mode = "forward"
+	// 	document.getElementById('flip').className = "normal";
+	// }
 }
