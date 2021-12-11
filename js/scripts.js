@@ -80,6 +80,16 @@ function Timer(){
 function mHandler(event){
 	console.log(event);
 	document.getElementById('tips').innerHTML = `<h1>${event.alpha.toFixed(2)} - ${event.beta.toFixed(2)} - ${event.gamma.toFixed(2)}</h1>`
+	var beta = event.beta ? event.beta : 0;
+	if(beta < 0){
+		_mode = "backward"
+		document.getElementById('flip').className = "flipped";
+	}
+	else{
+		_mode = "forward"
+		document.getElementById('flip').className = "normal";
+	}
+
 	// _rotationTotal += event.rotationRate.gamma;
 	// _rotationTotal = _rotationTotal % 360;
 	// _angle = Math.abs(_rotationTotal);
