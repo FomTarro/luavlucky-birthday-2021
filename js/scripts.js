@@ -1,13 +1,11 @@
 
 var _time = 0;
-var _angle = 0;
-var _mode = "forward";
+var _mode = 1;
 var _desiredTime = 3600;
 var _paused = false;
 var _timer;
 var _timer_ms = 0;
-
-_rotationTotal = 0;
+var _supportsOrientation = false;
 
 navigator.getBattery().then(function(battery) {
 	document.getElementById('percentzone').innerHTML = "<h3>[battery level: " + Math.floor(battery.level * 100) + "%]</h3>";
@@ -21,22 +19,21 @@ navigator.getBattery().then(function(battery) {
   });
 });
 
-function Pause(event){
+function pause(event){
 	_paused = !_paused;
 	if(_paused){
 		window.clearInterval(_timer);
 		document.getElementById('timerDisplay').classList.add('paused')
-		// document.getElementById('tips').innerHTML = "<h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to resume]</h2>"
+		document.getElementById('pause').innerHTML = "[tap the timer to resume]"
 	}
 	else{
 		document.getElementById('timerDisplay').classList.remove('paused')
-		_timer = window.setInterval(Timer, 10);
-		// document.getElementById('tips').innerHTML = "<h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to pause]</h2>"
+		_timer = window.setInterval(timer, 10);
+		document.getElementById('pause').innerHTML = "[tap the timer to pause]"
 	}
 }
 
 function toHHMMSS(sec_num) {
-
     var hours   = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);
@@ -46,62 +43,57 @@ function toHHMMSS(sec_num) {
     return hours+':'+minutes+':'+seconds;
 }
 
-function SetOffset(){
-
-	document.getElementById('timerDisplay').innerText = toHHMMSS(_time);
-	// document.getElementById('calibrate').style.display = "none";
-	document.getElementById('calibrate').classList.add('fade-away')
-	document.getElementById('tips').style.display = "block";
-	document.getElementById('batteryzone').style.display = "block";
-	_timer = window.setInterval(Timer, 10);
-	document.getElementById("eventHaver").addEventListener('mousedown', Pause);
+function desktopFlip(){
+	if(_timer){
+		mHandler({beta: -1 * _mode});
+	}
 }
 
-function Timer(){
+function setOffset(){
+	document.getElementById('timerDisplay').innerText = toHHMMSS(_time);
+	document.getElementById('calibrate').classList.add('fade-away')
+	_timer = window.setInterval(timer, 10);
+	document.getElementById("timerDisplay").addEventListener('mousedown', pause);
+}
 
+function timer(){
 	_timer_ms = _timer_ms + 1;
 
 	if(_timer_ms >= 100){
-		if(_mode == "forward"){
+		if(_mode > 0){
 			_time = _time + 1;
 		}
-		else if(_mode == "backward"){
+		else if(_mode <= 0){
 			_time = _time - 1;
 		}
 
 		_time = Math.max(0, _time);
 		_time = Math.min(_desiredTime, _time);
-		
-		document.getElementById('timerDisplay').innerText = toHHMMSS(_time);
+		var arrow = (_mode > 0) ? ' ↑ ' : ' ↓ ';
+		document.getElementById('timerDisplay').innerText = arrow + toHHMMSS(_time) + arrow
 		_timer_ms = 0;
 	}
 }
 
 function mHandler(event){
-	console.log(event);
-	document.getElementById('tips').innerHTML = `<h1>${event.alpha.toFixed(2)} - ${event.beta.toFixed(2)} - ${event.gamma.toFixed(2)}</h1>`
 	var beta = event.beta ? event.beta : 0;
 	if(beta < 0){
-		_mode = "backward"
-		document.getElementById('flip').className = "flipped";
+		_mode = -1;
+		if(_supportsOrientation == true){
+			document.getElementById('flip').className = "flipped";
+		}
 	}
 	else{
-		_mode = "forward"
-		document.getElementById('flip').className = "normal";
+		_mode = 1
+		if(_supportsOrientation == true){
+			document.getElementById('flip').className = "normal";
+		}
 	}
-
-	// _rotationTotal += event.rotationRate.gamma;
-	// _rotationTotal = _rotationTotal % 360;
-	// _angle = Math.abs(_rotationTotal);
-	// //document.getElementById('timerDisplay').innerText = _angle;
-	// if(_angle <= 270 && _angle > 90){
-	// 	_mode = "backward"
-	// 	document.getElementById('flip').className = "flipped";
-	// }
-	// else if(_angle >= 270 || _angle <= 90){
-	// 	_mode = "forward"
-	// 	document.getElementById('flip').className = "normal";
-	// }
 }
 
-window.addEventListener('deviceorientation', mHandler);
+if(window.DeviceOrientationEvent && 'ontouchstart' in window){
+	window.addEventListener('deviceorientation', mHandler);
+	_supportsOrientation = true;
+}else{
+	document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
+}

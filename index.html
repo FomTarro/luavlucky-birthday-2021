@@ -1,14 +1,18 @@
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Lua Egg Timer</title>
-    
+    <title>Lua's Egg Timer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta id='meta-img' property="og:image" content="">
+    <meta id='meta-title' property="og:title" content="Lua's Egg Timer">
+    <meta id='meta-desc' property="og:description" content="Happy birthday, Lua!">
+    <meta name="twitter:card" content="summary">
 
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 
   </head>
     <body>
-        <div id="calibrate" class='drop-shadow' onclick="SetOffset()">
+        <div id="calibrate" class='drop-shadow' onclick="setOffset()">
             <span id="instructions">[hold your phone vertically, please]</span>
             <br>
             <span>[then tap here to start the timer]</span>
@@ -17,7 +21,10 @@
         <div id="flip" class="normal">
             <div id="eventHaver" class='drop-shadow'>
                 <div id="timerDisplay" style="font-size: 10em;">0:00:00</div>
-                <div id="tips" style="display: block;"><h1>[flip your phone to count the other way]</h1><h2>[tap and hold the timer to resume]</h2></div>
+                <div id="tips" style="display: block;">
+                    <h1 id='advice'>[flip your phone to count the other way]</h1>
+                    <h2 id='pause'>[tap  the timer to resume]</h2>
+                </div>
                 <div id="batteryzone" style="display: block;">
                     <div id="percentzone"><h3>[battery level: 100%]</h3></div>
                      <div id="chargingzone"><h4>[battery: charging]</h4></div>
@@ -26,6 +33,6 @@
         </div>
 
         <script src="./js/scripts.js"></script>
-    
-
-</body></html>
+</body>
+<footer>asdf</footer>
+</html>
