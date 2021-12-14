@@ -50,6 +50,30 @@ function desktopFlip(){
 }
 
 function setOffset(){
+
+	// if(window.DeviceOrientationEvent && 'ontouchstart' in window){
+	// 	window.addEventListener('deviceorientation', mHandler);
+	// 	_supportsOrientation = true;
+	// }else{
+	// 	document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
+	// }
+
+	if (typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function") {
+        // (optional) Do something before API request prompt.
+        DeviceMotionEvent.requestPermission()
+            .then( response => {
+            // (optional) Do something after API prompt dismissed.
+            if ( response == "granted" ) {
+				window.addEventListener('deviceorientation', mHandler);
+				_supportsOrientation = true;
+            }
+        })
+            .catch( console.error )
+    } else {
+        document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
+		_supportsOrientation = false;
+    }
+
 	document.getElementById('timerDisplay').innerText = toHHMMSS(_time);
 	document.getElementById('calibrate').classList.add('fade-away')
 	_timer = window.setInterval(timer, 10);
@@ -89,11 +113,4 @@ function mHandler(event){
 			document.getElementById('flip').className = "normal";
 		}
 	}
-}
-
-if(window.DeviceOrientationEvent && 'ontouchstart' in window){
-	window.addEventListener('deviceorientation', mHandler);
-	_supportsOrientation = true;
-}else{
-	document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
 }
