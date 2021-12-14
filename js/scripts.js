@@ -69,6 +69,7 @@ function setOffset(){
 		if(window.DeviceOrientationEvent && 'ontouchstart' in window){
 			window.addEventListener('deviceorientation', mHandler);
 			_supportsOrientation = true;
+			document.getElementById('advice').innerHTML = '[flip your phone to count the other way]'
 		}else{
 			document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
 			_supportsOrientation = false;
