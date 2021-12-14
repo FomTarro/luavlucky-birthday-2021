@@ -51,13 +51,6 @@ function desktopFlip(){
 
 function setOffset(){
 
-	// if(window.DeviceOrientationEvent && 'ontouchstart' in window){
-	// 	window.addEventListener('deviceorientation', mHandler);
-	// 	_supportsOrientation = true;
-	// }else{
-	// 	document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
-	// }
-
 	if (typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function") {
         // (optional) Do something before API request prompt.
         DeviceMotionEvent.requestPermission()
@@ -67,12 +60,19 @@ function setOffset(){
 				window.addEventListener('deviceorientation', mHandler);
 				_supportsOrientation = true;
 				document.getElementById('advice').innerHTML = '[flip your phone to count the other way]'
-            }
-        })
-            .catch( console.error )
-    } else {
-        document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
-		_supportsOrientation = false;
+            }else{
+				document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
+				_supportsOrientation = false;
+			}
+        }).catch( console.error )
+    } else 
+		if(window.DeviceOrientationEvent && 'ontouchstart' in window){
+			window.addEventListener('deviceorientation', mHandler);
+			_supportsOrientation = true;
+		}else{
+			document.getElementById('advice').innerHTML = '<a onclick="desktopFlip()">[tap here to count the other way]</a>'
+			_supportsOrientation = false;
+		}{
     }
 
 	document.getElementById('timerDisplay').innerText = toHHMMSS(_time);
