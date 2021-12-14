@@ -66,6 +66,7 @@ function setOffset(){
             if ( response == "granted" ) {
 				window.addEventListener('deviceorientation', mHandler);
 				_supportsOrientation = true;
+				document.getElementById('advice').innerHTML = '[flip your phone to count the other way]'
             }
         })
             .catch( console.error )
