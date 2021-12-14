@@ -16,4 +16,4 @@ This web app is a dead-simple vanilla JS/HTML page, with no backend. No need to 
 
 ## Closing remarks 💭
 
-HAPPY ANNIBIRTHDAY, LUA! You are genuninely one of the coolest people I've met in this space. I look forward to seeing what incredible creative endeavors you bring to the scene in your next year of activity.
+HAPPY ANNIBIRTHDAY, LUA! You are genuinely one of the coolest people I've met in this space. I look forward to seeing what incredible creative endeavors you bring to the scene in your next year of activity.
