@@ -39,13 +39,13 @@ footer{
 
 .flipped {
     transform: scale(-1, -1);
-    padding-bottom: 25vh;
+    padding-bottom: 30vh;
 
 }
 
 .normal {
     transform: scale(1, 1);
-    padding-top: 25vh;
+    padding-top: 30vh;
 }
 
 #eventHaver {
