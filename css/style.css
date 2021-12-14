@@ -50,7 +50,7 @@ footer{
 
 #eventHaver {
     background-color: rgb(53, 47, 47); 
-    padding: 3.5vh;
+    padding: 3.5vw;
     text-align: center; 
     display: block;
     -webkit-touch-callout: none; /* iOS Safari */
@@ -62,9 +62,6 @@ footer{
                                   not supported by any browser */
 }
 
-#tips, #batteryzone {
-    display: none;
-}
 
 #calibrate { 
     position: absolute;
@@ -72,7 +69,7 @@ footer{
     font-size: 2em; 
     background-color: rgb(53, 47, 47); 
     text-align: center; 
-    padding: 3.5vh;
+    padding: 3.5vw;
     z-index: 100;
 }
 
@@ -84,6 +81,10 @@ footer{
     inset 0 0 10px rgb(255 255 255 / 30%);
     border: white solid 8px;
     border-radius: 8px 8px 8px 8px;
+}
+
+#start{
+    color: FFFA8A
 }
 
 #advice{
