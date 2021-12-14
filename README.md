@@ -2,6 +2,8 @@
 
 This web app was made for beloved VTuber creative Lua V. Lucky as a gift for her combination Anniversary and Birthday in 2021!
 
+You can try it here: https://www.skeletom.net/gifts/lua-birthday-2021/
+
 ## What is it? ⏳
 
 This web app is a simple hourglass timer. Hold your device upright to have the timer start ticking. Flip the deive upside down to reverse the count (also works on desktop with a button instead of gravity).
